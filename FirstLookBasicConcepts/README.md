@@ -89,3 +89,122 @@ for a solution. It helps you organize, manage, and delete resources together.
 
 > 🗑️ **Tip:** When you finish a lab, deleting the resource group 
 > deletes **everything inside it** in one click — saving credits.
+
+## 🧱 Azure Basic Concepts
+
+> **⚠️ Already familiar with Azure basics?**
+> This section covers foundational concepts: Resource Groups, Regions, 
+> Storage Accounts, and more.
+> Feel free to **skip to the next section** if you know these well —
+> but a quick refresh never hurts. 😉
+
+---
+# 🧱 Azure Basic Concepts
+
+> **⚠️ Already familiar with Azure basics?**  
+> This section covers: Regions, Resource Groups, Storage Accounts, SLA, Cost and Budgets.  
+> Feel free to **skip to the next section** if you know these well — but a quick refresh never hurts. 😉
+
+---
+
+## 🗺️ Regions
+
+Almost every resource in Azure must be placed in a **Region** — the geographic 
+location of the datacenter where your resource will live.
+
+### How to select a Region?
+
+| Criteria | Description |
+|---|---|
+| 📍 **Proximity** | Choose the region closest to your users for lower latency |
+| ✅ **Service availability** | Not all services are available in every region — always verify at [azure.microsoft.com/en-us/global-infrastructure/services](https://azure.microsoft.com/en-us/global-infrastructure/services/) |
+| 🏗️ **Availability Zones** | Some regions have multiple physical datacenters for higher availability |
+| 💰 **Pricing** | The same service can have different prices across regions |
+
+> 💡 **Example:** The same VM (D2 v3, Windows) costs ~$192/month in Norway West 
+> but only ~$152/month in West US — same specs, different region, 20% cheaper.
+
+---
+
+## 📦 Resource Groups
+
+A **Resource Group** is a free logical container that groups related Azure resources.
+
+- Almost every resource in Azure must belong to a Resource Group
+- Used to organize resources by project, environment, or team
+- Deleting a Resource Group deletes **all resources inside it**
+
+### Azure Hierarchy
+---
+
+## 💾 Storage Account
+
+A **Storage Account** is used to store almost anything in Azure.
+
+- Used transparently by many Azure services (backups, VM disks, diagnostics)
+- Also available for explicit data storage (files, blobs, tables, queues)
+- Very cost-effective
+
+> We'll explore Storage Accounts in depth in a later module.
+
+---
+
+## 📊 SLA — Service Level Agreement
+
+The **SLA** defines the guaranteed uptime percentage of a cloud service.
+
+| SLA (%) | Yearly Downtime Allowed |
+|---|---|
+| 95% | 18d 6h 17m 27s |
+| 99% | 3d 15h 39m 29s |
+| 99.9% | 8h 45m 56s |
+| 99.99% | 52m 35s |
+
+> ⚠️ **Always check the SLA** of every service you use.  
+> Free and Shared tiers usually have **no SLA**.
+
+### SLA Calculation
+
+When your system uses multiple services, multiply their SLAs to get the 
+**actual system SLA**:
+### 🧮 SLA Calculator
+
+A simple tool to calculate downtime from any SLA percentage:  
+🔗 [uptime.is](https://uptime.is/)
+
+---
+
+## 💰 Cost
+
+Almost everything in the cloud costs money. Azure uses three main pricing models:
+
+| Model | Description | Example |
+|---|---|---|
+| **Per resource** | Fixed cost for provisioned resource | Virtual Machines |
+| **Per consumption** | Pay only for what is used | Function Apps |
+| **Reservations** | Commit 1–3 years for up to ~57% discount | VMs, SQL |
+
+> ✅ **Best practices:**
+> - Always check cost **before** provisioning
+> - Look for more cost-effective alternatives
+> - Use reservations for stable, long-running workloads
+
+### 🧮 Azure Pricing Calculator
+
+Estimate costs before deploying anything:  
+🔗 [azure.microsoft.com/en-us/pricing/calculator](https://azure.microsoft.com/en-us/pricing/calculator/)
+
+---
+
+## 🎯 Setting a Budget
+
+> *(Lab: Configure a budget alert in Azure Cost Management)*
+
+To avoid unexpected charges during the course, it's highly recommended to 
+set a **spending budget with alerts** in your subscription.
+
+**Steps:**  
+`Azure Portal` → `Cost Management` → `Budgets` → `+ Add`
+
+> 💡 **Tip for this course:** Set an alert at 50% and 80% of your $200 credit 
+> so you never run out unexpectedly before finishing the labs.
